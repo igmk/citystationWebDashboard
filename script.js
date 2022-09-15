@@ -10,7 +10,7 @@ async function queryAPI() {
 async function updateBoxes() {
     
     let data = await queryAPI();
-    document.querySelector("#datetime").innerHTML = data["datetime"]
+    document.querySelector("#datetime").innerHTML = " "+data["datetime"]+" UTC"
     document.querySelector("#temperature").innerHTML = data["temperature"]+" °C"
     document.querySelector("#humidity").innerHTML = data["humidity"]+" %"
     document.querySelector("#pressure").innerHTML = data["pressure"]+" hPa"
