@@ -31,4 +31,4 @@ updateBoxes()
 setInterval(function(){ 
   updateBoxes()
     //code goes here that will be run every 5 seconds.    
-}, 5000);
+}, 30000);
