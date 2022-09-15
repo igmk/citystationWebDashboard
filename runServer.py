@@ -5,7 +5,7 @@ import pandas as pd
 
 hostName = "localhost"
 serverPort = 80
-dataFilePath = "./latest_values.dat"
+dataFilePath = " /data/obs/site/cgn/meteo_sport/latest_values.dat"
 
 class MyServer(BaseHTTPRequestHandler):
     def do_GET(self):
