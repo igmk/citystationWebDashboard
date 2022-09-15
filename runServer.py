@@ -1,22 +1,28 @@
 # Python 3 server example
 from http.server import BaseHTTPRequestHandler, HTTPServer
-import datetime
 import json
+import pandas as pd
 
 hostName = "localhost"
 serverPort = 80
+dataFilePath = "./latest_values.dat"
 
 class MyServer(BaseHTTPRequestHandler):
     def do_GET(self):
         if self.path == "/data.json":
+            df = pd.read_csv(dataFilePath, header=1, skiprows=[2,3])
+            #convert wind direction
+            dir_name=[ 'N', 'NNO', 'NO', 'ONO','O','OSO','SO','SSO','S','SSW','SW','WSW','W','WNW', 'NW', 'NNW', 'N' ] 
+            directionLetter = dir_name[int(df['WindDir_D1_WVT'].item()/22.5+0.5)]
+            speed = round(df['WS_ms_S_WVT'].item()*3.6,1)
             dict = {
-                "datetime": datetime.datetime.now().strftime("%d.%m.%Y %H:%M"),
-                "temperature": 20.0,
-                "humidity": 35,
-                "pressure": 1013,
-                "uv": 3,
-                "direction": "NW",
-                "speed": 7
+                "datetime":         df['TIMESTAMP'].item(),
+                "temperature":      round(df['AirTC_2_Avg'].item(),1),
+                "humidity":         round(df['RH_2'].item(),0),
+                "pressure":         round(df['BP_mbar_Avg'].item(),0),
+                "uv":               round(df['UVind_Avg'].item(),0),
+                "direction":        directionLetter,
+                "speed":            str(speed).replace(".",",")
             }
             #read last entry from data file and update dict
             # To do
@@ -25,6 +31,15 @@ class MyServer(BaseHTTPRequestHandler):
             self.send_header('Content-Type', 'application/json')
             self.end_headers()
             self.wfile.write(bytes(json.dumps(dict, ensure_ascii=False), 'utf-8'))
+        elif self.path == "/script.js":
+            #f = open("./index.html")
+            self.send_response(200)
+            self.send_header('Content-type',"text/javascript")
+            self.end_headers()
+            #self.wfile.write(bytes(f.read(), 'utf-8'))
+            #f.close()
+            with open('./script.js', 'rb') as file: 
+                self.wfile.write(file.read()) # Read the file and send the contents 
         else:
             #f = open("./index.html")
             self.send_response(200)
