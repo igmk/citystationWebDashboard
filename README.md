@@ -1,5 +1,5 @@
 # webDashboard
-This script reads data from a csv file and shows them on a web dashboard.
+This script reads data from a csv file and presents them on a web dashboard.
 ![preview](https://user-images.githubusercontent.com/22216795/190348667-75b74867-0105-4102-b34c-18d7e2af7205.png)
 ## Usage
 1. Change Parameters in runServer.py
