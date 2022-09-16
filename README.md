@@ -30,6 +30,6 @@ dataFilePath = "./latest_values.dat"
 python runServer.py
 ```
 # Licenses
-This Dashboard uses several external ressources. Please check the license agreements before using the dashboard:
+This Dashboard uses several external ressources. Please check the license before using the dashboard:
 - [AdminLTE CDN](https://adminlte.io/docs/3.2/license.html)
 - [Bootstrap CDN](https://icons.getbootstrap.com/)
