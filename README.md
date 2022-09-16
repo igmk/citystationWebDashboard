@@ -29,4 +29,7 @@ dataFilePath = "./latest_values.dat"
 ```bash
 python runServer.py
 ```
-
+# Licenses
+This Dashboard uses several external resources. Please check the license agreements before using the dashboard:
+- [AdminLTE CDN](https://adminlte.io/docs/3.2/license.html)
+- [Bootstrap CDN](https://icons.getbootstrap.com/)
