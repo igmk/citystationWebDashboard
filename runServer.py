@@ -3,12 +3,9 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
 import pandas as pd
 
-### change here ###
-hostName = "localhost"
-serverPort = 80
-dataFilePath = "./latest_values.dat"
-### change here ###
-
+hostName = "134.95.211.110"
+serverPort = 8080
+dataFilePath = "/data/obs/site/cgn/meteo_sport/latest_values.dat"
 
 class MyServer(BaseHTTPRequestHandler):
     def do_GET(self):
