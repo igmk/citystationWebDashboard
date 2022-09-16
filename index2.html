@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html style="height: auto;" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Wetterstation Grüngürtel</title>
+    <script
+      src="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/js/adminlte.min.js"></script>
+    <script src="/script.js"></script>
+    <link rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/css/adminlte.min.css">
+    <link rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+  </head>
+
+
+  <body class="sidebar-collapse layout-fixed" style="background-color: #f4f6f9;">
+    <div class="wrapper">
+
+      <div class="content-wrapper">
+
+        <div class="content-header">
+          <div class="container-fluid">
+            <div class="row mb-2">
+              <div class="col-sm-6">
+                <h1 class="m-0">Wetterstation Grüngürtel</h1>
+              </div>
+              <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                  <a href="https://goo.gl/maps/wdrASUMp3HKUPxzT8" class="bi
+                    bi-pin-map"></a><li class="breadcrumb-item active"
+                    id="datetime"> </li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <section class="content">
+          <div class="container-fluid">
+
+            <div class="row">
+              <div class="col-lg-3 col-6">
+
+                <div class="small-box bg-info">
+                  <div class="inner">
+                    <h3 id="temperature">NaN</h3>
+                    <p>Temperatur</p>
+                  </div>
+                  <div class="icon">
+                    <i class="bi bi-thermometer-half"></i>
+                  </div>
+                  <a href="https://atmos.meteo.uni-koeln.de/~citystation/dataBrowser/dataBrowser1.html" class="small-box-footer">Zeitverlauf <i class="bi
+                      bi-graph-up"></i></a>
+                  <div id="spinner1" class="overlay">
+                    <i class="spinner-border "></i>
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="col-lg-3 col-6">
+
+                <div class="small-box bg-info">
+                  <div class="inner">
+                    <h3 id="humidity">NaN</h3>
+                    <p>relative Feuchte</p>
+                  </div>
+                  <div class="icon">
+                    <i class="bi bi-droplet"></i>
+                  </div>
+                  <a href="https://atmos.meteo.uni-koeln.de/~citystation/dataBrowser/dataBrowser1.html" class="small-box-footer">Zeitverlauf <i class="bi
+                      bi-graph-up"></i></a>
+                  <div id="spinner2" class="overlay">
+                    <i class="spinner-border "></i>
+                  </div>
+                </div>
+              </div>
+
+
+
+
+
+            </div>
+            <div class="row">
+              <div class="col-lg-3 col-6">
+
+                <div class="small-box bg-success">
+                  <div class="inner">
+                    <h3 id="pressure">NaN</h3>
+                    <p>Luftdruck</p>
+                  </div>
+                  <div class="icon">
+                    <i class="bi bi-speedometer2"></i>
+                  </div>
+                  <a href="https://atmos.meteo.uni-koeln.de/~citystation/dataBrowser/dataBrowser1.html" class="small-box-footer">Zeitverlauf <i class="bi
+                      bi-graph-up"></i></a>
+                  <div id="spinner3" class="overlay">
+                    <i class="spinner-border "></i>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-3 col-6">
+
+                <div class="small-box bg-success">
+                  <div class="inner">
+                    <h3 id="uv">NaN</h3>
+                    <p>UV-Index</p>
+                  </div>
+                  <div class="icon">
+                    <i class="bi bi-brightness-high"></i>
+                  </div>
+                  <a href="https://atmos.meteo.uni-koeln.de/~citystation/dataBrowser/dataBrowser1.html" class="small-box-footer">Zeitverlauf <i class="bi
+                      bi-graph-up"></i></a>
+                  <div id="spinner4" class="overlay">
+                    <i class="spinner-border "></i>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="row">
+              <div class="col-lg-3 col-6">
+
+                <div class="small-box bg-danger">
+                  <div class="inner">
+                    <h3 id="speed">NaN</h3>
+                    <p>Windgeschwindigkeit</p>
+                  </div>
+                  <div class="icon">
+                    <i class="bi bi-wind"></i>
+                  </div>
+                  <a href="https://atmos.meteo.uni-koeln.de/~citystation/dataBrowser/dataBrowser1.html" class="small-box-footer">Zeitverlauf <i class="bi
+                      bi-graph-up"></i></a>
+                  <div id="spinner5" class="overlay">
+                    <i class="spinner-border "></i>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-6">
+
+                <div class="small-box bg-danger">
+                  <div class="inner">
+                    <h3 id="direction">NaN</h3>
+                    <p>Windrichtung</p>
+                  </div>
+                  <div class="icon">
+                    <i class="bi bi-compass"></i>
+                  </div>
+                  <a href="https://atmos.meteo.uni-koeln.de/~citystation/dataBrowser/dataBrowser1.html" class="small-box-footer">Zeitverlauf <i class="bi
+                      bi-graph-up"></i></a>
+                  <div id="spinner6" class="overlay">
+                    <i class="spinner-border "></i>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+
+
+          </div>
+        </section>
+
+
+      </div>
+
+
+    </div>
+
+  </body>
+</html>
