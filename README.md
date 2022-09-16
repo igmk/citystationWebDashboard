@@ -18,6 +18,7 @@ python updateJSON.py
 - index.html
 - script.js
 - data.js
+7. check that values on dashboard are updating
 ### without existing web-server
 1. Change Parameters in runServer.py
 ```python
