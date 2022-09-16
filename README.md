@@ -5,15 +5,19 @@ This script reads data from a csv file and presents them on a web dashboard.
 ### with existing web-server
 1. Clone repository into web directory
 2. check if dashboard is displayed correctly
-3. update file-paths in 
+3. update file-paths in updateJSON.py
 ```python
 dataFilePath = "./latest_values.dat"
 jsonFilePath = "./data.json"
 ```
-4. run updatate-routine
+5. run updatate-routine
 ```bash
 python updateJSON.py
 ```
+6. make sure that the following files exist in the web-directory:
+- index.html
+- script.js
+- data.js
 ### without existing web-server
 1. Change Parameters in runServer.py
 ```python
