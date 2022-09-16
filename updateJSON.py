@@ -13,7 +13,7 @@ def updateJSON():
     speed = round(df['WS_ms_S_WVT'].item()*3.6,1)
     dict = {
         "datetime":         df['TIMESTAMP'].item(),
-        "temperature":      round(df['AirTC_2_Avg'].item(),1),
+        "temperature":      round(df['AirTC_2_Avg'].item(),1).replace(".",","),
         "humidity":         round(df['RH_2'].item(),0),
         "pressure":         round(df['BP_mbar_Avg'].item(),0),
         "uv":               round(df['UVind_Avg'].item(),0),
