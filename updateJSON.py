@@ -1,5 +1,6 @@
 import json
 import pandas as pd
+import time
 
 dataFilePath = "/data/obs/site/cgn/meteo_sport/latest_values.dat"
 jsonFilePath = "/home/citystation/public_html/webDashboard/data.json"
@@ -21,4 +22,6 @@ def updateJSON():
     }
     with open(jsonFilePath, 'w') as f:
         json.dump(dict, f) 
+updateJSON()
+time.sleep(30)
 updateJSON()
