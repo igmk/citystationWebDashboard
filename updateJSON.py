@@ -1,11 +1,8 @@
-# Python 3 server example
-from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
 import pandas as pd
-import time
 
 dataFilePath = "/data/obs/site/cgn/meteo_sport/latest_values.dat"
-jsonFilePath = "./data.json"
+jsonFilePath = "/home/citystation/public_html/webDashboard/data.json"
 
 def updateJSON():
     df = pd.read_csv(dataFilePath, header=1, skiprows=[2,3])
@@ -24,6 +21,4 @@ def updateJSON():
     }
     with open(jsonFilePath, 'w') as f:
         json.dump(dict, f) 
-while True:
-    updateJSON()
-    time.sleep(30)
+updateJSON()
