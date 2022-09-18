@@ -8,8 +8,11 @@ jsonFilePath = "/home/citystation/public_html/webDashboard/data.json"
 def updateJSON():
     df = pd.read_csv(dataFilePath, header=1, skiprows=[2,3])
     #convert wind direction
-    dir_name=[ 'N', 'NNO', 'NO', 'ONO','O','OSO','SO','SSO','S','SSW','SW','WSW','W','WNW', 'NW', 'NNW', 'N' ] 
-    directionLetter = dir_name[int(float(df['WindDir_D1_WVT'].item())/22.5+0.5)]
+    dir_name=[ 'N', 'NNO', 'NO', 'ONO','O','OSO','SO','SSO','S','SSW','SW','WSW','W','WNW', 'NW', 'NNW', 'N' ]
+    try:
+        directionLetter = dir_name[int(df['WindDir_D1_WVT'].item()/22.5+0.5)]
+    except:
+        directionLetter = "no data"
     speed = round(df['WS_ms_S_WVT'].item()*3.6,1)
     dict = {
         "datetime":         df['TIMESTAMP'].item(),
