@@ -11,8 +11,10 @@ def updateJSON():
     dir_name=[ 'N', 'NNO', 'NO', 'ONO','O','OSO','SO','SSO','S','SSW','SW','WSW','W','WNW', 'NW', 'NNW', 'N' ]
     directionLetter = dir_name[int(df['WindDir_D1_WVT'].item()/22.5+0.5)]
     speed = round(float(df['WS_ms_S_WVT'].item())*3.6,1)
+    datetime = pd.to_datetime(df['TIMESTAMP'].item())
+    datetime = datetime.tz_localize('utc').tz_convert('Europe/Berlin')
     dict = {
-        "datetime":         df['TIMESTAMP'].item(),
+        "datetime":         datetime.strftime("%d.%M.%Y %H:%m:%S"),
         "temperature":      str(round(df['AirTC_2_Avg'].item(),1)).replace(".",","),
         "humidity":         round(df['RH_2'].item(),0),
         "pressure":         round(df['BP_mbar_Avg'].item(),0),
