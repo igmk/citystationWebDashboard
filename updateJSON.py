@@ -14,7 +14,7 @@ def updateJSON():
     datetime = pd.to_datetime(df['TIMESTAMP'].item())
     datetime = datetime.tz_localize('utc').tz_convert('Europe/Berlin')
     dict = {
-        "datetime":         datetime.strftime("%d.%M.%Y %H:%m:%S"),
+        "datetime":         datetime.strftime("%d.%m.%Y %H:%M:%S"),
         "temperature":      str(round(df['AirTC_2_Avg'].item(),1)).replace(".",","),
         "humidity":         round(df['RH_2'].item(),0),
         "pressure":         round(df['BP_mbar_Avg'].item(),0),
