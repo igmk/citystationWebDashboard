@@ -1,7 +1,7 @@
 import json
 import pandas as pd
 import time
-
+#test
 dataFilePath = "/data/obs/site/cgn/meteo_sport/latest_values.dat"
 jsonFilePath = "/home/citystation/public_html/webDashboard/data.json"
 
