@@ -17,6 +17,10 @@ async function updateBoxes() {
     document.querySelector("#uv").innerHTML = data["uv"]
     document.querySelector("#speed").innerHTML = data["speed"]+" km/h"
     document.querySelector("#direction").innerHTML = data["direction"]
+    document.querySelector("#cbh_cur").innerHTML = data["cbh_cur"]+" km"
+    document.querySelector("#cbh_low").innerHTML = data["cbh_low"]+" km"
+    document.querySelector("#cbh_mid").innerHTML = data["cbh_mid"]+" km"
+    document.querySelector("#cbh_hig").innerHTML = data["cbh_hig"]+" km"
     
     document.querySelector("#spinner1").style.display ="none";
     document.querySelector("#spinner2").style.display ="none";
@@ -24,11 +28,17 @@ async function updateBoxes() {
     document.querySelector("#spinner4").style.display ="none";
     document.querySelector("#spinner5").style.display ="none";
     document.querySelector("#spinner6").style.display ="none";
+    document.querySelector("#spinner7").style.display ="none";
+    document.querySelector("#spinner8").style.display ="none";
+    document.querySelector("#spinner9").style.display ="none";
+    document.querySelector("#spinner10").style.display ="none";
+
+    
 }
 
 updateBoxes()
 
 setInterval(function(){ 
   updateBoxes()
-    //code goes here that will be run every 5 seconds.    
+    //code goes here that will be run every 30 seconds.    
 }, 30000);
