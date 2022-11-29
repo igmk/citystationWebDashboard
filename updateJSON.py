@@ -6,8 +6,8 @@ import pandas as pd
 import time
 
 dataFilePath = "/data/obs/site/cgn/meteo_sport/latest_values.dat"
-# jsonFilePath = "/home/citystation/public_html/webDashboard/data.json"
-jsonFilePath = "/home/jschween/public_html/citystation/webDashboard/data.json"
+jsonFilePath = "/home/citystation/public_html/webDashboard/data.json"
+# jsonFilePath = "/home/jschween/public_html/citystation/webDashboard/data.json"
 
 cl51_dataPath = "/data/obs/site/cgn/cl51/l0/last_cbh.txt"
 
