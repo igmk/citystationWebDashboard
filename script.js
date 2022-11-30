@@ -29,6 +29,10 @@ async function updateBoxes() {
     document.querySelector("#spinner4").style.display ="none";
     document.querySelector("#spinner5").style.display ="none";
     document.querySelector("#spinner6").style.display ="none";
+    document.querySelector("#spinner7").style.display ="none";
+    document.querySelector("#spinner8").style.display ="none";
+    document.querySelector("#spinner9").style.display ="none";
+    document.querySelector("#spinner10").style.display ="none";
 }
 
 updateBoxes()
