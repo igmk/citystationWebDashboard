@@ -10,6 +10,7 @@ async function queryAPI() {
 async function updateBoxes() {
     
     let data = await queryAPI();
+    //update box-values
     document.querySelector("#datetime").innerHTML = " "+data["datetime"]+" MEZ"
     document.querySelector("#temperature").innerHTML = data["temperature"]+" °C"
     document.querySelector("#humidity").innerHTML = data["humidity"]+" %"
@@ -21,7 +22,7 @@ async function updateBoxes() {
     document.querySelector("#cbh_low").innerHTML = data["cbh_low"]+" km"
     document.querySelector("#cbh_mid").innerHTML = data["cbh_mid"]+" km"
     document.querySelector("#cbh_hig").innerHTML = data["cbh_hig"]+" km"
-    
+    //disable spinner
     document.querySelector("#spinner1").style.display ="none";
     document.querySelector("#spinner2").style.display ="none";
     document.querySelector("#spinner3").style.display ="none";
@@ -33,12 +34,10 @@ async function updateBoxes() {
     document.querySelector("#spinner9").style.display ="none";
     document.querySelector("#spinner10").style.display ="none";
 
-    
 }
 
 updateBoxes()
 
 setInterval(function(){ 
   updateBoxes()
-    //code goes here that will be run every 30 seconds.    
 }, 30000);
