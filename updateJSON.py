@@ -45,7 +45,7 @@ def updateJSON():
         "datetime":         datetime.strftime("%d.%m.%Y %H:%M:%S"),
         "temperature":      str(round(df['AirTC_2_Avg'].item(),1)).replace(".",","),
         "humidity":         round(df['RH_2'].item(),0),
-        "pressure":         round(df['BP_mbar_Avg'].item(),0),
+        "pressure":         round(df['BP_mbar_sl_Avg'].item(),0),
         "uv":               round(df['UVind_Avg'].item(),0),
         "direction":        directionLetter,
         "speed":            str(speed).replace(".",","),
