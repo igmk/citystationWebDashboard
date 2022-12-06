@@ -10,6 +10,7 @@ async function queryAPI() {
 async function updateBoxes() {
     
     let data = await queryAPI();
+    //update box-values
     document.querySelector("#datetime").innerHTML = " "+data["datetime"]+" MEZ"
     document.querySelector("#temperature").innerHTML = data["temperature"]+" °C"
     document.querySelector("#humidity").innerHTML = data["humidity"]+" %"
@@ -17,18 +18,19 @@ async function updateBoxes() {
     document.querySelector("#uv").innerHTML = data["uv"]
     document.querySelector("#speed").innerHTML = data["speed"]+" km/h"
     document.querySelector("#direction").innerHTML = data["direction"]
-    
+    document.querySelector("#cbh_cur").innerHTML = data["cbh_cur"]+" m"
+    //disable spinner
     document.querySelector("#spinner1").style.display ="none";
     document.querySelector("#spinner2").style.display ="none";
     document.querySelector("#spinner3").style.display ="none";
     document.querySelector("#spinner4").style.display ="none";
     document.querySelector("#spinner5").style.display ="none";
     document.querySelector("#spinner6").style.display ="none";
+    document.querySelector("#spinner7").style.display ="none";
 }
 
 updateBoxes()
 
 setInterval(function(){ 
   updateBoxes()
-    //code goes here that will be run every 5 seconds.    
 }, 30000);
