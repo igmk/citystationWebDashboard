@@ -26,9 +26,9 @@
               </div>
               <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                  <a href="https://goo.gl/maps/wdrASUMp3HKUPxzT8" class="bi
-                    bi-pin-map"></a><li class="breadcrumb-item active"
-                    id="datetime"  style="font-size: 25px;"> </li>
+                  <a href="https://goo.gl/maps/wdrASUMp3HKUPxzT8" class="bi bi-pin-map"></a>
+                  &nbsp; &nbsp; &nbsp; <!--- some space between locator link/icon and timestamp --->
+                  <li class="breadcrumb-item active" id="datetime"  style="font-size: 25px;"> </li>
                 </ol>
               </div>
             </div>
@@ -45,14 +45,14 @@
                 <div class="small-box bg-info">
                   <div class="inner">
                     <h3 id="temperature">NaN</h3>
-                    <p>Temperatur, 2m AGL</p>
+                    <p>Temperatur, 2m</p>  <!--- AGL gelöscht: Abk. für 'Above Ground Level' --- man könnte auch 'H&ouml;he' schreiben, geht meiner meinung aber auch ganz ohne ---> 
                   </div>
                   <div class="icon">
                     <i class="bi bi-thermometer-half"></i>
                   </div>
                   <div class="small-box-footer">
                     <a href="https://atmos.meteo.uni-koeln.de/~citystation/dataBrowser/dataBrowser1.html?site=CITYSTATION&date=0&UpperLeft=Temperatur" style="color:white">Zeitverlauf <i class="bi bi-graph-up"></i></a>
-                    &nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;  <!--- some space between the two link+icon combinations --->
                     <a href="https://obs.meteo.uni-koeln.de/doku.php?id=citystation" style="color:white">Erkl&auml;rung <i class="bi bi-file-earmark-text"></i></a>
                   </div>
 
@@ -68,7 +68,7 @@
                 <div class="small-box bg-info">
                   <div class="inner">
                     <h3 id="humidity">NaN</h3>
-                    <p>relative Feuchte, 2m AGL</p>
+                    <p>relative Feuchte, 2m</p>
                   </div>
                   <div class="icon">
                     <i class="bi bi-droplet"></i>
@@ -95,7 +95,7 @@
                 <div class="small-box bg-success">
                   <div class="inner">
                     <h3 id="pressure">NaN</h3>
-                    <p>Luftdruck, reduziert auf MSL</p>
+                    <p>Luftdruck, reduziert auf NN</p>  <!---  das war MSL, Abk. für 'Mean Sea Level' , ersetzt durch NN = 'Normal Null', das ist die (alte) deutsche Bezeichung, neu wäre NHN ...  --->
                   </div>
                   <div class="icon">
                     <i class="bi bi-speedometer2"></i>
@@ -142,7 +142,7 @@
                 <div class="small-box bg-danger">
                   <div class="inner">
                     <h3 id="speed">NaN</h3>
-                    <p>Windgeschwindigkeit, 4m AGL</p>
+                    <p>Windgeschwindigkeit, 4m</p>
                   </div>
                   <div class="icon">
                     <i class="bi bi-wind"></i>
@@ -163,7 +163,7 @@
                 <div class="small-box bg-danger">
                   <div class="inner">
                     <h3 id="direction">NaN</h3>
-                    <p>Windrichtung, 4m AGL</p>
+                    <p>Windrichtung, 4m </p>
                   </div>
                   <div class="icon">
                     <i class="bi bi-compass"></i>
@@ -188,7 +188,7 @@
                 <div class="small-box bg-blue">
                   <div class="inner">
                     <h3 id="cbh_cur">NaN</h3>
-                    <p>Wolkenbasish&ouml;he aktuell</p>
+                    <p>Wolkenbasish&ouml;he</p>
                   </div>
                   <div class="icon">
                     <i class="bi bi-clouds"></i>

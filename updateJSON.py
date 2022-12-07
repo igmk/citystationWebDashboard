@@ -12,10 +12,19 @@ cl51_dataPath = "/data/obs/site/cgn/cl51/l0/last_cbh.txt"
 jsonFilePath = "data.json"
 
 
+def float_format( x, n_digits ) :
+  # function to format x with n_digits after the decimal point
+  # replace decimal point with comma, replace 'nan' with three dashes '---'
+  # this works with also with integers or n_digits=0, in contrast to e.g. round( 1.23, 0) which generates '1.0'
+  s = ('{0:.'+str(n_digits)+'f}').format(x).replace(".",",").replace('nan','---') 
+  return s
+
 # formatting of cloud base heights 
-def cbh_to_str( cbh_m, cbh_s, digits ):
-  sm = str(round(cbh_m,digits)).replace(".",",").replace('nan','---')
-  ss = str(round(cbh_s,digits)).replace(".",",").replace('nan','---')
+def cbh_to_str( cbh_m, cbh_s, n_digits ) :
+  # create string of the form   'mean +/- stddev' (cbh_m+/-cbh_s) with n_digits after the decimal point
+  # if  cbh_s == 0  or  cbh_s==nan  only cbh_m is provided, nan is replaced by '---'
+  sm = float_format( cbh_m, n_digits )
+  ss = float_format( cbh_s, n_digits )
   if (cbh_s == 0) or (sm == '---') :
     s = sm
   else :
