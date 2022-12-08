@@ -6,6 +6,7 @@ import pandas as pd
 import time
 
 dataFilePath = "/data/obs/site/cgn/meteo_sport/latest_values.dat"
+
 cl51_dataPath = "/data/obs/site/cgn/cl51/l0/last_cbh.txt"
 
 # jsonFilePath = "/home/citystation/public_html/webDashboard/data.json"
@@ -25,6 +26,7 @@ def cbh_to_str( cbh_m, cbh_s, n_digits ) :
   # if  cbh_s == 0  or  cbh_s==nan  only cbh_m is provided, nan is replaced by '---'
   sm = float_format( cbh_m, n_digits )
   ss = float_format( cbh_s, n_digits )
+
   if (cbh_s == 0) or (sm == '---') :
     s = sm
   else :
@@ -40,6 +42,7 @@ def updateJSON():
 
     #convert wind direction
     dir_name=[ 'N', 'NNO', 'NO', 'ONO','O','OSO','SO','SSO','S','SSW','SW','WSW','W','WNW', 'NW', 'NNW', 'N' ]
+
     directionLetter = dir_name[int(df['WindDir_D1_WVT'].values.item()/22.5+0.5)]
 
     # speed in km/h with one digit after the decimal point 
@@ -47,6 +50,7 @@ def updateJSON():
 
     # convert utc time stamp into python datetime
     datetime = pd.to_datetime(df['TIMESTAMP'].values.item())
+
     datetime = datetime.tz_localize('utc').tz_convert('Europe/Berlin')
    
     # create a dict with nicely formatted strings for the variables 
@@ -58,7 +62,9 @@ def updateJSON():
         "uv":               round(df['UVind_Avg'].values.item(),0),
         "direction":        directionLetter,
         "speed":            str(speed).replace(".",","),
+
         "cbh_cur":          cbh_to_str( df_cl51['cbh[last] (km)'].values.item()*1000., 0 , 0 )
+
         }
 
     # export these strings in data.json

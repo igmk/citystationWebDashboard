@@ -18,7 +18,9 @@ async function updateBoxes() {
     document.querySelector("#uv").innerHTML = data["uv"]
     document.querySelector("#speed").innerHTML = data["speed"]+" km/h"
     document.querySelector("#direction").innerHTML = data["direction"]
+
     document.querySelector("#cbh_cur").innerHTML = data["cbh_cur"]+" m"
+
     //disable spinner
     document.querySelector("#spinner1").style.display ="none";
     document.querySelector("#spinner2").style.display ="none";
@@ -27,6 +29,7 @@ async function updateBoxes() {
     document.querySelector("#spinner5").style.display ="none";
     document.querySelector("#spinner6").style.display ="none";
     document.querySelector("#spinner7").style.display ="none";
+
 }
 
 updateBoxes()
