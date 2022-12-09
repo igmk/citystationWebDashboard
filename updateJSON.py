@@ -9,8 +9,8 @@ dataFilePath = "/data/obs/site/cgn/meteo_sport/latest_values.dat"
 
 cl51_dataPath = "/data/obs/site/cgn/cl51/l0/last_cbh.txt"
 
-# jsonFilePath = "/home/citystation/public_html/webDashboard/data.json"
-jsonFilePath = "data.json"
+jsonFilePath = "/home/citystation/public_html/webDashboard/data.json"
+#jsonFilePath = "data.json"
 
 
 def float_format( x, n_digits ) :
