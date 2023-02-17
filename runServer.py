@@ -3,14 +3,20 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
 import pandas as pd
 
-hostName = "134.95.211.110"
-serverPort = 8080
-dataFilePath = "/data/obs/site/cgn/meteo_sport/latest_values.dat"
+#hostName = "134.95.211.110"
+hostName = "localhost"
+#serverPort = 8080
+serverPort = 80
+#dataFilePath = "/data/obs/site/cgn/meteo_sport/latest_values.dat"
+dataFilePath = "./latest_values.dat"
+thiesFilePath = "./latest_thies.dat"
 
 class MyServer(BaseHTTPRequestHandler):
     def do_GET(self):
         if self.path == "/data.json":
             df = pd.read_csv(dataFilePath, header=1, skiprows=[2,3])
+            df_t = pd.read_csv(thiesFilePath)
+			
             #convert wind direction
             dir_name=[ 'N', 'NNO', 'NO', 'ONO','O','OSO','SO','SSO','S','SSW','SW','WSW','W','WNW', 'NW', 'NNW', 'N' ] 
             directionLetter = dir_name[int(df['WindDir_D1_WVT'].item()/22.5+0.5)]
@@ -22,7 +28,8 @@ class MyServer(BaseHTTPRequestHandler):
                 "pressure":         round(df['BP_mbar_Avg'].item(),0),
                 "uv":               round(df['UVind_Avg'].item(),0),
                 "direction":        directionLetter,
-                "speed":            str(speed).replace(".",",")
+                "speed":            str(speed).replace(".",","),
+				"precip":           round(df_t['precip'].item(),1)
             }
             #read last entry from data file and update dict
             # To do
