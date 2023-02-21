@@ -26,7 +26,7 @@
               </div>
               <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                  <a href="https://goo.gl/maps/MVX8aoqWydQ5atEx6" class="bi bi-pin-map"></a>
+                  <a href="https://www.openstreetmap.org/#map=19/50.92967/6.93252" class="bi bi-pin-map"></a>
                   &nbsp; &nbsp; &nbsp; <!--- some space between locator link/icon and timestamp --->
                   <li class="breadcrumb-item active" id="datetime"  style="font-size: 25px;"> </li>
                 </ol>
@@ -34,6 +34,7 @@
             </div>
           </div>
         </div>
+	
 
 
         <section class="content">
@@ -42,7 +43,7 @@
             <div class="row">
               <div class="col-lg-3 col-6">
 
-                <div class="small-box bg-info">
+                <div class="small-box bg-danger">
                   <div class="inner">
                     <h3 id="temperature">NaN</h3>
                     <p>Temperatur, 2m</p>  <!--- AGL gel�scht: Abk. f�r 'Above Ground Level' --- man k�nnte auch 'H&ouml;he' schreiben, geht meiner meinung aber auch ganz ohne ---> 
@@ -62,42 +63,14 @@
 
                 </div>
               </div>
-
+			  
+			  
               <div class="col-lg-3 col-6">
 
-                <div class="small-box bg-info">
-                  <div class="inner">
-                    <h3 id="humidity">NaN</h3>
-                    <p>relative Feuchte, 2m</p>
-                  </div>
-                  <div class="icon">
-                    <i class="bi bi-droplet"></i>
-                  </div>
-
-                  <div class="small-box-footer">
-                    <a href="https://atmos.meteo.uni-koeln.de/~citystation/dataBrowser/dataBrowser1.html?site=CITYSTATION&date=0&UpperLeft=Feuchte" style="color:white">Zeitverlauf <i class="bi bi-graph-up"></i></a>
-                    &nbsp;&nbsp;&nbsp;
-                    <a href="https://obs.meteo.uni-koeln.de/doku.php?id=citystation" style="color:white">Erkl&auml;rung <i class="bi bi-file-earmark-text"></i></a>
-                  </div>
-
-                  <div id="spinner2" class="overlay">
-                    <i class="spinner-border "></i>
-                  </div>
-                </div>
-              </div>
-
-
-
-
-
-            </div>
-            <div class="row">
-              <div class="col-lg-3 col-6">
-
-                <div class="small-box bg-success">
+                <div class="small-box bg-warning">
                   <div class="inner">
                     <h3 id="pressure">NaN</h3>
-                    <p>Luftdruck, reduziert auf NN</p>  <!---  das war MSL, Abk. f�r 'Mean Sea Level' , ersetzt durch NN = 'Normal Null', das ist die (alte) deutsche Bezeichung, neu w�re NHN ...  --->
+                    <p>Luftdruck, normiert auf NN</p>  <!---  das war MSL, Abk. f�r 'Mean Sea Level' , ersetzt durch NN = 'Normal Null', das ist die (alte) deutsche Bezeichung, neu w�re NHN ...  --->
                   </div>
                   <div class="icon">
                     <i class="bi bi-speedometer2"></i>
@@ -118,7 +91,109 @@
 
               <div class="col-lg-3 col-6">
 
+                <div class="small-box bg-blue">
+                  <div class="inner">
+				  <h3>
+					<span id="speed">NaN</span>
+					<span id="direction" style="float:right;">NaN</span>
+				  </h3>
+                    <p>Windgeschwindigkeit u. -richtung, 4m</p>
+                  </div>
+                  <div class="icon">
+                    <i class="bi bi-wind"></i>
+                  </div>
+
+                  <div class="small-box-footer">
+                    <a href="https://atmos.meteo.uni-koeln.de/~citystation/dataBrowser/dataBrowser2.html?site=CITYSTATION&date=2023-02-21&UpperLeft=Windgeschwindigkeit&UpperRight=Windrichtung" style="color:white">Zeitverlauf <i class="bi bi-graph-up"></i></a>
+                    &nbsp;&nbsp;&nbsp;
+                    <a href="https://obs.meteo.uni-koeln.de/doku.php?id=citystation" style="color:white">Erkl&auml;rung <i class="bi bi-file-earmark-text"></i></a>
+                  </div>
+
+
+                  <div id="spinner5" class="overlay">
+                    <i class="spinner-border "></i>
+                  </div>
+                </div>
+              </div>
+
+			  
+              <div class="col-lg-3 col-6">
+
                 <div class="small-box bg-success">
+                  <div class="inner">
+                    <h3 id="humidity">NaN</h3>
+                    <p>relative Feuchte, 2m</p>
+                  </div>
+                  <div class="icon">
+                    <i class="bi bi-droplet"></i>
+                  </div>
+
+                  <div class="small-box-footer">
+                    <a href="https://atmos.meteo.uni-koeln.de/~citystation/dataBrowser/dataBrowser1.html?site=CITYSTATION&date=0&UpperLeft=Feuchte" style="color:white">Zeitverlauf <i class="bi bi-graph-up"></i></a>
+                    &nbsp;&nbsp;&nbsp;
+                    <a href="https://obs.meteo.uni-koeln.de/doku.php?id=citystation" style="color:white">Erkl&auml;rung <i class="bi bi-file-earmark-text"></i></a>
+                  </div>
+
+                  <div id="spinner2" class="overlay">
+                    <i class="spinner-border "></i>
+                  </div>
+                </div>
+              </div>			  
+
+
+
+
+
+            </div>
+			
+            <div class="row">
+
+			<div class="col-lg-3 col-6">
+
+                <div class="small-box bg-info">
+                  <div class="inner">
+                    <h3 id="precip" style="color:white">NaN</h3>
+                    <p style="color:white">Niederschlag</p>
+                  </div>
+                  <div class="icon">
+                    <i class="bi bi-moisture"></i>
+                  </div>
+
+                  <div class="small-box-footer">
+                    <a href="https://atmos.meteo.uni-koeln.de/~citystation/dataBrowser/dataBrowser1.html?site=CITYSTATION&date=0&UpperLeft=Niederschlag" style="color:white">Zeitverlauf <i class="bi bi-graph-up"></i></a>
+                    &nbsp;&nbsp;&nbsp;
+                    <a href="https://obs.meteo.uni-koeln.de/doku.php?id=citystation" style="color:white">Erkl&auml;rung <i class="bi bi-file-earmark-text"></i></a>
+                  </div>
+
+                </div>
+              </div>
+
+			  <div class="col-lg-3 col-6">
+
+                <div class="small-box bg-light">
+                  <div class="inner">
+                    <h3 id="cbh_cur">NaN</h3>
+                    <p>Wolkenbasish&ouml;he</p>
+                  </div>
+                  <div class="icon">
+                    <i class="bi bi-clouds"></i>
+                  </div>
+
+                  <div class="small-box-footer">
+                    <a href="https://atmos.meteo.uni-koeln.de/~citystation/dataBrowser/dataBrowser2.html?site=CITYSTATION&date=0&UpperLeft=Ceilometer_all&UpperRight=Ceilometer_3km" style="color:white">Zeitverlauf <i class="bi bi-graph-up"></i></a>
+                    &nbsp;&nbsp;&nbsp;
+                    <a href="https://obs.meteo.uni-koeln.de/doku.php?id=citystation" style="color:white">Erkl&auml;rung <i class="bi bi-file-earmark-text"></i></a>
+                  </div>
+
+                  <div id="spinner7" class="overlay">
+                    <i class="spinner-border "></i>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-3 col-6">
+
+                <div class="small-box bg-purple">
                   <div class="inner">
                     <h3 id="uv">NaN</h3>
                     <p>UV-Index</p>
@@ -139,89 +214,13 @@
                   </div>
                 </div>
               </div>
+			  
+		      <div class="col-lg-3 col-6">
 
-            </div>
-
-            <div class="row">
-              <div class="col-lg-3 col-6">
-
-                <div class="small-box bg-danger">
+                <div class="small-box bg-orange">
                   <div class="inner">
-                    <h3 id="speed">NaN</h3>
-                    <p>Windgeschwindigkeit, 4m</p>
-                  </div>
-                  <div class="icon">
-                    <i class="bi bi-wind"></i>
-                  </div>
-
-                  <div class="small-box-footer">
-                    <a href="https://atmos.meteo.uni-koeln.de/~citystation/dataBrowser/dataBrowser1.html?site=CITYSTATION&date=0&UpperLeft=Windgeschwindigkeit" style="color:white">Zeitverlauf <i class="bi bi-graph-up"></i></a>
-                    &nbsp;&nbsp;&nbsp;
-                    <a href="https://obs.meteo.uni-koeln.de/doku.php?id=citystation" style="color:white">Erkl&auml;rung <i class="bi bi-file-earmark-text"></i></a>
-                  </div>
-
-
-                  <div id="spinner5" class="overlay">
-                    <i class="spinner-border "></i>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3 col-6">
-
-                <div class="small-box bg-danger">
-                  <div class="inner">
-                    <h3 id="direction">NaN</h3>
-                    <p>Windrichtung, 4m </p>
-                  </div>
-                  <div class="icon">
-                    <i class="bi bi-compass"></i>
-                  </div>
-
-                  <div class="small-box-footer">
-                    <a href="https://atmos.meteo.uni-koeln.de/~citystation/dataBrowser/dataBrowser1.html?site=CITYSTATION&date=0&UpperLeft=Windrichtung" style="color:white">Zeitverlauf <i class="bi bi-graph-up"></i></a>
-                    &nbsp;&nbsp;&nbsp;
-                    <a href="https://obs.meteo.uni-koeln.de/doku.php?id=citystation" style="color:white">Erkl&auml;rung <i class="bi bi-file-earmark-text"></i></a>
-                  </div>
-
-
-                  <div id="spinner6" class="overlay">
-                    <i class="spinner-border "></i>
-                  </div>
-
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-lg-3 col-6">
-
-                <div class="small-box bg-blue">
-                  <div class="inner">
-                    <h3 id="cbh_cur">NaN</h3>
-                    <p>Wolkenbasish&ouml;he</p>
-                  </div>
-                  <div class="icon">
-                    <i class="bi bi-clouds"></i>
-                  </div>
-
-                  <div class="small-box-footer">
-                    <a href="https://atmos.meteo.uni-koeln.de/~citystation/dataBrowser/dataBrowser2.html?site=CITYSTATION&date=0&UpperLeft=Ceilometer_all&UpperRight=Ceilometer_3km" style="color:white">Zeitverlauf <i class="bi bi-graph-up"></i></a>
-                    &nbsp;&nbsp;&nbsp;
-                    <a href="https://obs.meteo.uni-koeln.de/doku.php?id=citystation" style="color:white">Erkl&auml;rung <i class="bi bi-file-earmark-text"></i></a>
-                  </div>
-
-
-                  <div id="spinner7" class="overlay">
-                    <i class="spinner-border "></i>
-                  </div>
-                </div>
-              </div>
-		              <div class="col-lg-3 col-6">
-
-                <div class="small-box bg-blue">
-                  <div class="inner">
-                    <h3 id="cbh_cur">in Kürze verfügbar</h3>
-                    <p>Globalstrahlung</p>
+                    <h3 id="strahl">in Kürze verfügbar</h3>
+                    <p>Strahlungsbilanz</p>
                   </div>
                   <div class="icon">
                     <i class="bi bi-sun"></i>
@@ -232,16 +231,22 @@
                     &nbsp;&nbsp;&nbsp;
                     <a href="https://obs.meteo.uni-koeln.de/doku.php?id=citystation" style="color:white">Erkl&auml;rung <i class="bi bi-file-earmark-text"></i></a>
                   </div>
-
+				  <div id="spinner6" class="overlay">
+                    <i class="spinner-border "></i>
+                  </div>
 
                 </div>
               </div>
+			  
+
+			
 
             </div>
-		  <div class="row">
+			
+			<div class="row">
 		              <div class="col-lg-3 col-6">
 
-                <div class="small-box bg-yellow">
+                <div class="small-box bg-red">
                   <div class="inner">
                     <h3 id="cbh_cur" style="color:white">in Kürze verfügbar</h3>
                     <p style="color:white">Ozonkonzentration</p>
@@ -259,27 +264,7 @@
 
                 </div>
               </div>
-				              <div class="col-lg-3 col-6">
-
-                <div class="small-box bg-yellow">
-                  <div class="inner">
-                    <h3 id="precip" style="color:white">NaN</h3>
-                    <p style="color:white">Niederschlag</p>
-                  </div>
-                  <div class="icon">
-                    <i class="bi bi-moisture"></i>
-                  </div>
-
-                  <div class="small-box-footer">
-                    <a href="https://atmos.meteo.uni-koeln.de/~citystation/dataBrowser/dataBrowser1.html?site=CITYSTATION&date=0&UpperLeft=Niederschlag" style="color:white">Zeitverlauf <i class="bi bi-graph-up"></i></a>
-                    &nbsp;&nbsp;&nbsp;
-                    <a href="https://obs.meteo.uni-koeln.de/doku.php?id=citystation" style="color:white">Erkl&auml;rung <i class="bi bi-file-earmark-text"></i></a>
-                  </div>
-
-
-                </div>
-              </div>
-
+			  
             </div>
 
 
@@ -299,7 +284,7 @@
           für Geophysik und Meteorologie</a>.</strong>
       All rights reserved.
       <div class="float-right d-none d-sm-inline-block">
-        <b>Version</b> 0.1
+        <b>Version</b> 0.2
       </div>
     </footer>
       </div>
