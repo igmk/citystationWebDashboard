@@ -21,7 +21,7 @@ class MyServer(BaseHTTPRequestHandler):
     def do_GET(self):
         if self.path == "/data.json":
             df = pd.read_csv(dataFilePath, header=1, skiprows=[2,3])
-            df_t = pd.read_csv(thiesFilePath)
+            df_t = pd.read_csv(thiesFilePath, header=0)
 			
             #convert wind direction
             dir_name=[ 'N', 'NNO', 'NO', 'ONO','O','OSO','SO','SSO','S','SSW','SW','WSW','W','WNW', 'NW', 'NNW', 'N' ] 
