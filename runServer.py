@@ -35,7 +35,7 @@ class MyServer(BaseHTTPRequestHandler):
                 "uv":               round(df['UVind_Avg'].item(),0),
                 "direction":        directionLetter,
                 "speed":            str(speed).replace(".",","),
-				"precip":           round(df_t['precip'].item(),1)
+                "precip":           round(df_t['precip'].item(),1)
             }
             #read last entry from data file and update dict
             # To do
