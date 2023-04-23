@@ -21,7 +21,7 @@ async function updateBoxes() {
 
     document.querySelector("#cbh_cur").innerHTML = data["cbh_cur"]+" m"
 	
-	document.querySelector("#precip").innerHTML = data["precip"]+" mm/h"
+	document.querySelector("#precip").innerHTML = data["precip"]+" mm/min"
 
     //disable spinner
     document.querySelector("#spinner1").style.display ="none";
