@@ -9,6 +9,8 @@ dataFilePath = "/data/obs/site/cgn/meteo_sport/latest_values.dat"
 
 cl51_dataPath = "/data/obs/site/cgn/cl51/l0/last_cbh.txt"
 
+thies_dataPath = "/data/obs/site/cgn/thies/l1/latest_thies.dat"
+
 jsonFilePath = "/home/citystation/public_html/webDashboard/data.json"
 #jsonFilePath = "data.json"
 
@@ -39,6 +41,7 @@ def updateJSON():
     # read data from files
     df      = pd.read_csv(dataFilePath, header=1, skiprows=[2,3])
     df_cl51 = pd.read_csv(cl51_dataPath, header=0, comment='#' )
+	df_thies = pd.read_csv(thies_dataPath)
 
     #convert wind direction
     dir_name=[ 'N', 'NNO', 'NO', 'ONO','O','OSO','SO','SSO','S','SSW','SW','WSW','W','WNW', 'NW', 'NNW', 'N' ]
@@ -63,7 +66,9 @@ def updateJSON():
         "direction":        directionLetter,
         "speed":            str(speed).replace(".",","),
 
-        "cbh_cur":          cbh_to_str( df_cl51['cbh[last] (km)'].values.item()*1000., 0 , 0 )
+        "cbh_cur":          cbh_to_str( df_cl51['cbh[last] (km)'].values.item()*1000., 0 , 0 ),
+		
+		"precip":           round(df_thies[[15]].div(60).values.item(),0)
 
         }
 
