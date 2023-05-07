@@ -9,12 +9,12 @@ if (local==True):
 	hostName = "localhost"
 	serverPort = 80
 	dataFilePath = "./latest_values.dat"
-	thiesFilePath = "./latest_thies.dat"
+	thiesFilePath = "./latest_hour_thies_cum.dat"
 else:
 	hostName = "134.95.211.110"
 	serverPort = 8080
 	dataFilePath = "/data/obs/site/cgn/meteo_sport/latest_values.dat"
-	thiesFilePath = "/data/obs/site/cgn/thies/l1/latest_thies.dat"
+	thiesFilePath = "/data/obs/site/cgn/thies/l1/latest_hour_thies_cum.dat"
 
 
 class MyServer(BaseHTTPRequestHandler):

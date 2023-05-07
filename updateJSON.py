@@ -10,13 +10,13 @@ local = False
 
 if(local==True):
 	dataFilePath = "./latest_values.dat"
-	thiesFilePath = "./latest_thies.dat"
+	thiesFilePath = "./latest_hour_thies_cum.dat"
 	jsonFilePath = "./data.json"
 	cl51FilePath = "./last_cbh.txt"
 else:
 	dataFilePath = "/data/obs/site/cgn/meteo_sport/latest_values.dat"
 	cl51FilePath = "/data/obs/site/cgn/cl51/l0/last_cbh.txt"
-	thiesFilePath = "/data/obs/site/cgn/thies/l1/latest_thies.dat"
+	thiesFilePath = "/data/obs/site/cgn/thies/l1/latest_hour_thies_cum.dat"
 	jsonFilePath = "/home/citystation/public_html/webDashboard/data.json"
 #jsonFilePath = "data.json"
 
