@@ -48,7 +48,7 @@ def updateJSON():
     df      = pd.read_csv(dataFilePath, header=1, skiprows=[2,3])
     df_cl51 = pd.read_csv(cl51FilePath, header=0, comment='#' )
     df_thies = pd.read_csv(thiesFilePath)
-    print(df_thies)
+    #print(df_thies)
     #convert wind direction
     dir_name=[ 'N', 'NNO', 'NO', 'ONO','O','OSO','SO','SSO','S','SSW','SW','WSW','W','WNW', 'NW', 'NNW', 'N' ]
 
@@ -74,7 +74,7 @@ def updateJSON():
 
         "cbh_cur":          cbh_to_str( df_cl51['cbh[last] (km)'].values.item()*1000., 0 , 0 ),
 		
-		"precip":           round(df_thies["precip"].div(60).values.item(),0)
+        "precip":           round(df_thies["precip"].div(60).values.item(),0)
 
         }
 

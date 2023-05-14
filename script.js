@@ -21,7 +21,7 @@ async function updateBoxes() {
 
     document.querySelector("#cbh_cur").innerHTML = data["cbh_cur"]+" m"
 	
-	document.querySelector("#precip").innerHTML = data["precip"]+" mm"
+    document.querySelector("#precip").innerHTML = data["precip"]+" mm"
 
     //disable spinner
     document.querySelector("#spinner1").style.display ="none";
@@ -31,7 +31,9 @@ async function updateBoxes() {
     document.querySelector("#spinner5").style.display ="none";
     document.querySelector("#spinner6").style.display ="none";
     document.querySelector("#spinner7").style.display ="none";
-
+    document.querySelector("#spinner8").style.display ="none";
+    document.querySelector("#spinner9").style.display ="none";
+    
 }
 
 updateBoxes()
