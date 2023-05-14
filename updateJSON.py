@@ -74,7 +74,7 @@ def updateJSON():
 
         "cbh_cur":          cbh_to_str( df_cl51['cbh[last] (km)'].values.item()*1000., 0 , 0 ),
 		
-        "precip":           round(df_thies["precip"].div(60).values.item(),0)
+        "precip":           round(df_thies["accum"].values.item(),1)
 
         }
 
