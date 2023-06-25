@@ -18,6 +18,7 @@ async function updateBoxes() {
     document.querySelector("#uv").innerHTML = data["uv"]
     document.querySelector("#speed").innerHTML = data["speed"]+" km/h"
     document.querySelector("#direction").innerHTML = data["direction"]
+    document.querySelector("#strahl").innerHTML = data["global_radiation"]+" W/m²"
 
     document.querySelector("#cbh_cur").innerHTML = data["cbh_cur"]+" m"
 	

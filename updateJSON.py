@@ -71,6 +71,7 @@ def updateJSON():
         "uv":               round(df['UVind_Avg'].values.item(),0),
         "direction":        directionLetter,
         "speed":            str(speed).replace(".",","),
+        "global_radiation": round((df['SWUpper_Avg'].values.item()+df['LWUpper_Avg'].values.item()),0),
 
         "cbh_cur":          cbh_to_str( df_cl51['cbh[last] (km)'].values.item()*1000., 0 , 0 ),
 		
