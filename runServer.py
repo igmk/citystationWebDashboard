@@ -21,6 +21,8 @@ class MyServer(BaseHTTPRequestHandler):
     def do_GET(self):
         if self.path == "/data.json":
             df = pd.read_csv(dataFilePath, header=1, skiprows=[2,3])
+            if(df['SWUpper_Avg'].iloc[0]<0):
+                df['SWUpper_Avg']=0
             df_t = pd.read_csv(thiesFilePath, header=0)
 			
             #convert wind direction
