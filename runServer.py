@@ -21,8 +21,8 @@ class MyServer(BaseHTTPRequestHandler):
     def do_GET(self):
         if self.path == "/data.json":
             df = pd.read_csv(dataFilePath, header=1, skiprows=[2,3])
-            if(df['SWUpper_Avg'].iloc[0]<0):
-                df['SWUpper_Avg']=0
+            #if(df['SWUpper_Avg'].iloc[0]<0):
+            #    df['SWUpper_Avg']=0
             df_t = pd.read_csv(thiesFilePath, header=0)
 			
             #convert wind direction
@@ -37,7 +37,7 @@ class MyServer(BaseHTTPRequestHandler):
                 "uv":               round(df['UVind_Avg'].item(),0),
                 "direction":        directionLetter,
                 "speed":            str(speed).replace(".",","),
-                "global_radiation": round(df['SWUpper_Avg'].item(),0),
+                "global_radiation": max(round(df['SWUpper_Avg'].item(),0),0),
                 "precip":           round(df_t['accum'].item(),1)
             }
             #read last entry from data file and update dict
