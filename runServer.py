@@ -4,71 +4,88 @@ import json
 import pandas as pd
 
 
-local = False
-if (local==True):
-	hostName = "localhost"
-	serverPort = 80
-	dataFilePath = "./latest_values.dat"
-	thiesFilePath = "./latest_hour_thies_cum.dat"
+local = True
+if local:
+    hostName = "localhost"
+    serverPort = 8080
+    dataFilePath = "./latest_values.dat"
+    thiesFilePath = "./latest_hour_thies_cum.dat"
 else:
-	hostName = "134.95.211.110"
-	serverPort = 8080
-	dataFilePath = "/data/obs/site/cgn/meteo_sport/latest_values.dat"
-	thiesFilePath = "/data/obs/site/cgn/thies/l1/latest_hour_thies_cum.dat"
+    hostName = "134.95.211.110"
+    serverPort = 8080
+    dataFilePath = "/data/obs/site/cgn/meteo_sport/latest_values.dat"
+    thiesFilePath = "/data/obs/site/cgn/thies/l1/latest_hour_thies_cum.dat"
 
 
 class MyServer(BaseHTTPRequestHandler):
     def do_GET(self):
         if self.path == "/data.json":
-            df = pd.read_csv(dataFilePath, header=1, skiprows=[2,3])
-            #if(df['SWUpper_Avg'].iloc[0]<0):
+            df = pd.read_csv(dataFilePath, header=1, skiprows=[2, 3])
+            # if(df['SWUpper_Avg'].iloc[0]<0):
             #    df['SWUpper_Avg']=0
             df_t = pd.read_csv(thiesFilePath, header=0)
-			
-            #convert wind direction
-            dir_name=[ 'N', 'NNO', 'NO', 'ONO','O','OSO','SO','SSO','S','SSW','SW','WSW','W','WNW', 'NW', 'NNW', 'N' ] 
-            directionLetter = dir_name[int(df['WindDir_D1_WVT'].item()/22.5+0.5)]
-            speed = round(df['WS_ms_S_WVT'].item()*3.6,1)
+
+            # convert wind direction
+            dir_name = [
+                "N",
+                "NNO",
+                "NO",
+                "ONO",
+                "O",
+                "OSO",
+                "SO",
+                "SSO",
+                "S",
+                "SSW",
+                "SW",
+                "WSW",
+                "W",
+                "WNW",
+                "NW",
+                "NNW",
+                "N",
+            ]
+            directionLetter = dir_name[int(df["WindDir_D1_WVT"].item() / 22.5 + 0.5)]
+            speed = round(df["WS_ms_S_WVT"].item() * 3.6, 1)
             dict = {
-                "datetime":         df['TIMESTAMP'].item(),
-                "temperature":      round(df['AirTC_2_Avg'].item(),1),
-                "humidity":         round(df['RH_2'].item(),0),
-                "pressure":         round(df['BP_mbar_Avg'].item(),0),
-                "uv":               round(df['UVind_Avg'].item(),0),
-                "direction":        directionLetter,
-                "speed":            str(speed).replace(".",","),
-                "global_radiation": round(max(0,df['SWUpper_Avg'].values.item())),
-                "precip":           round(df_t['accum'].item(),1)
+                "datetime": df["TIMESTAMP"].item(),
+                "temperature": round(df["AirTC_2_Avg"].item(), 1),
+                "humidity": round(df["RH_2"].item(), 0),
+                "pressure": round(df["BP_mbar_Avg"].item(), 0),
+                "uv": round(df["UVind_Avg"].item(), 0),
+                "direction": directionLetter,
+                "speed": str(speed).replace(".", ","),
+                "global_radiation": round(max(0, df["SWUpper_Avg"].values.item())),
+                "precip": round(df_t["accum"].item(), 1),
             }
-            #read last entry from data file and update dict
+            # read last entry from data file and update dict
             # To do
-            #serve json
+            # serve json
             self.send_response(200)
-            self.send_header('Content-Type', 'application/json')
+            self.send_header("Content-Type", "application/json")
             self.end_headers()
-            self.wfile.write(bytes(json.dumps(dict, ensure_ascii=False), 'utf-8'))
+            self.wfile.write(bytes(json.dumps(dict, ensure_ascii=False), "utf-8"))
         elif self.path == "/script.js":
-            #f = open("./index.html")
+            # f = open("./index.html")
             self.send_response(200)
-            self.send_header('Content-type',"text/javascript")
+            self.send_header("Content-type", "text/javascript")
             self.end_headers()
-            #self.wfile.write(bytes(f.read(), 'utf-8'))
-            #f.close()
-            with open('./script.js', 'rb') as file: 
-                self.wfile.write(file.read()) # Read the file and send the contents 
+            # self.wfile.write(bytes(f.read(), 'utf-8'))
+            # f.close()
+            with open("./script.js", "rb") as file:
+                self.wfile.write(file.read())  # Read the file and send the contents
         else:
-            #f = open("./index.html")
+            # f = open("./index.html")
             self.send_response(200)
-            self.send_header('Content-type',"text/html")
+            self.send_header("Content-type", "text/html")
             self.end_headers()
-            #self.wfile.write(bytes(f.read(), 'utf-8'))
-            #f.close()
-            with open('./index.html', 'rb') as file: 
-                self.wfile.write(file.read()) # Read the file and send the contents 
-            
+            # self.wfile.write(bytes(f.read(), 'utf-8'))
+            # f.close()
+            with open("./index.html", "rb") as file:
+                self.wfile.write(file.read())  # Read the file and send the contents
 
 
-if __name__ == "__main__":        
+if __name__ == "__main__":
     webServer = HTTPServer((hostName, serverPort), MyServer)
     print("Server started http://%s:%s" % (hostName, serverPort))
 
