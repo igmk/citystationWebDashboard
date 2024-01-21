@@ -87,7 +87,7 @@ def updateJSON():
 
     # create a dict with nicely formatted strings for the variables
     dict = {
-        "datetime": datetime.strftime("%d.%m.%Y %H:%M:%S"),
+        "datetime": datetime.strftime("%Y-%m-%d %H:%M:%S"),
         "temperature": str(round(df["AirTC_2_Avg"].values.item(), 1)).replace(".", ","),
         "humidity": round(df["RH_2"].values.item(), 0),
         "pressure": round(df["BP_mbar_sl_Avg"].values.item(), 0),
