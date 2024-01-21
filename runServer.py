@@ -4,7 +4,7 @@ import json
 import pandas as pd
 
 
-local = True
+local = False
 if local:
     hostName = "localhost"
     serverPort = 8080
