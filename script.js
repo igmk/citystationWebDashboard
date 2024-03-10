@@ -24,17 +24,17 @@ async function updateBoxes() {
     var formattedDatetime = datetime.toLocaleString("de-DE", options);
 
     document.querySelector("#datetime").innerHTML = " " + formattedDatetime + " MEZ";
-    document.querySelector("#temperature").innerHTML = '<span">' + data["temperature"] + '</span><span class="mobile-font""> °C</span>';
-    document.querySelector("#humidity").innerHTML = '<span">' + data["humidity"] + '</span><span class="mobile-font""> %</span>';
-    document.querySelector("#pressure").innerHTML = '<span">' + data["pressure"] + '</span><span class="mobile-font""> hPa</span>';
-    document.querySelector("#uv").innerHTML = data["uv"]
-    document.querySelector("#speed").innerHTML = '<span">' + data["speed"] + '</span><span class="mobile-font""> km/h</span>';
-    document.querySelector("#direction").innerHTML = '<span class="mobile-font">' + data["direction"] + '</span>';
-    document.querySelector("#strahl").innerHTML = '<span">' + data["global_radiation"] + '</span><span class="mobile-font""> W/m²</span>';
+    document.querySelector("#temperature").innerHTML = '<span">' + data["temperature"]["string"] + '</span><span class="mobile-font""> °C</span>';
+    document.querySelector("#humidity").innerHTML = '<span">' + data["humidity"]["value"] + '</span><span class="mobile-font""> %</span>';
+    document.querySelector("#pressure").innerHTML = '<span">' + data["pressure"]["value"] + '</span><span class="mobile-font""> hPa</span>';
+    document.querySelector("#uv").innerHTML = data["uv"]["value"]
+    document.querySelector("#speed").innerHTML = '<span">' + data["wind_speed"]["value"] + '</span><span class="mobile-font""> km/h</span>';
+    document.querySelector("#direction").innerHTML = '<span class="mobile-font">' + data["wind_direction"]["value"] + '</span>';
+    document.querySelector("#strahl").innerHTML = '<span">' + data["global_radiation"]["value"] + '</span><span class="mobile-font""> W/m²</span>';
 
-    document.querySelector("#cbh_cur").innerHTML = '<span">' + data["cbh_cur"] + '</span><span class="mobile-font""> m</span>';
+    document.querySelector("#cbh_cur").innerHTML = '<span">' + data["cbh_cur"]["string"] + '</span><span class="mobile-font""> m</span>';
 
-    document.querySelector("#precip").innerHTML = '<span">' + data["precip"] + '</span><span class="mobile-font""> mm</span>';
+    document.querySelector("#precip").innerHTML = '<span">' + data["precip_last_hour"]["string"] + '</span><span class="mobile-font""> mm</span>';
 
     //disable spinner
     document.querySelector("#spinner1").style.display = "none";
