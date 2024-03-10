@@ -53,7 +53,7 @@ def updateJSON():
     df = pd.read_csv(dataFilePath, header=1, skiprows=[2, 3])
     df_cl51 = pd.read_csv(cl51FilePath, header=0, comment="#")
     df_thies = pd.read_csv(thiesFilePath)
-    # print(df_thies)
+
     # convert wind direction
     dir_name = [
         "N",
@@ -88,15 +88,38 @@ def updateJSON():
     # create a dict with nicely formatted strings for the variables
     dict = {
         "datetime": datetime.strftime("%Y-%m-%d %H:%M:%S"),
-        "temperature": str(round(df["AirTC_2_Avg"].values.item(), 1)).replace(".", ","),
-        "humidity": round(df["RH_2"].values.item(), 0),
-        "pressure": round(df["BP_mbar_sl_Avg"].values.item(), 0),
-        "uv": round(df["UVind_Avg"].values.item(), 0),
-        "direction": directionLetter,
-        "speed": str(speed).replace(".", ","),
-        "global_radiation": round(max(0, df["SWUpper_Avg"].values.item())),
-        "cbh_cur": cbh_to_str(df_cl51["cbh[last] (km)"].values.item() * 1000.0, 0, 0),
-        "precip": str(round(df_thies["accum"].values.item(), 1)).replace(".", ","),
+        "temperature": {
+            "value": round(df["AirTC_2_Avg"].values.item(), 1),
+            "unit": "°C",
+            "string": str(round(df["AirTC_2_Avg"].values.item(), 1)).replace(".", ","),
+        },
+        "humidity": {"value": round(df["RH_2"].values.item(), 0), "unit": "%"},
+        "pressure": {
+            "value": round(df["BP_mbar_sl_Avg"].values.item(), 0),
+            "unit": "hPa",
+        },
+        "uv": {"value": round(df["UVind_Avg"].values.item(), 0), "unit": ""},
+        "wind_direction": {"value": directionLetter, "unit": ""},
+        "wind_speed": {
+            "value": speed,
+            "unit": "km/h",
+            "string": str(speed).replace(".", ","),
+        },
+        "global_radiation": {
+            "value": round(max(0, df["SWUpper_Avg"].values.item())),
+            "unit": "W/m²",
+        },
+        "cbh_cur": {
+            "string": cbh_to_str(
+                df_cl51["cbh[last] (km)"].values.item() * 1000.0, 0, 0
+            ),
+            "unit": "m",
+        },
+        "precip_last_hour": {
+            "value": round(df_thies["accum"].values.item(), 1),
+            "unit": "mm",
+            "string": str(round(df_thies["accum"].values.item(), 1)).replace(".", ","),
+        },
     }
 
     # export these strings in data.json
