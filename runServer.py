@@ -10,14 +10,14 @@ if local:
     hostName = "localhost"
     serverPort = 8080
     dataFilePath = "./latest_values.dat"
-    thiesFilePath = "./latest_hour_thies_cum.dat"
+    thiesFilePath = "./latest_thies.dat"
     cl51FilePath = "./last_cbh.txt"
 
 else:
     hostName = "134.95.211.110"
     serverPort = 8080
     dataFilePath = "/data/obs/site/cgn/meteo_sport/latest_values.dat"
-    thiesFilePath = "/data/obs/site/cgn/thies/l1/latest_hour_thies_cum.dat"
+    thiesFilePath = "/data/obs/site/cgn/thies/latest_thies.dat"
     jsonFilePath = "/home/citystation/public_html/webDashboard/data.json"
     cl51FilePath = "/data/obs/site/cgn/cl51/l0/last_cbh.txt"
 
@@ -85,12 +85,24 @@ class MyServer(BaseHTTPRequestHandler):
                     ),
                     "unit": "m",
                 },
-                "precip_last_hour": {
-                    "value": round(df_thies["accum"].values.item(), 1),
-                    "unit": "mm",
-                    "string": str(round(df_thies["accum"].values.item(), 1)).replace(
-                        ".", ","
-                    ),
+                "precip": {
+                    "precip_last_hour": {
+                        "value": round(
+                            df_thies["accum_precip_1_hour"].values.item(), 1
+                        ),
+                        "unit": "mm",
+                        "string": str(
+                            round(df_thies["accum_precip_1_hour"].values.item(), 1)
+                        ).replace(".", ","),
+                    },
+                    "precip_type": {
+                        "value": df_thies["precip_type"].values.item(),
+                        "unit": "METAR 4678",
+                    },
+                    "precip_rate": {
+                        "value": round(df_thies["precip_rate"].values.item(), 1),
+                        "unit": "mm/min",
+                    },
                 },
             }
             # read last entry from data file and update dict
