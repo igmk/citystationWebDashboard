@@ -85,12 +85,24 @@ class MyServer(BaseHTTPRequestHandler):
                     ),
                     "unit": "m",
                 },
-                "precip_last_hour": {
-                    "value": round(df_thies["accum_precip_1_hour"].values.item(), 1),
-                    "unit": "mm",
-                    "string": str(
-                        round(df_thies["accum_precip_1_hour"].values.item(), 1)
-                    ).replace(".", ","),
+                "precip": {
+                    "precip_last_hour": {
+                        "value": round(
+                            df_thies["accum_precip_1_hour"].values.item(), 1
+                        ),
+                        "unit": "mm",
+                        "string": str(
+                            round(df_thies["accum_precip_1_hour"].values.item(), 1)
+                        ).replace(".", ","),
+                    },
+                    "precip_type": {
+                        "value": round(df_thies["precip_type"].values.item(), 1),
+                        "unit": "",
+                    },
+                    "precip_rate": {
+                        "value": round(df_thies["precip_rate"].values.item(), 1),
+                        "unit": "mm/min",
+                    },
                 },
             }
             # read last entry from data file and update dict
