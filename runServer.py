@@ -10,14 +10,14 @@ if local:
     hostName = "localhost"
     serverPort = 8080
     dataFilePath = "./latest_values.dat"
-    thiesFilePath = "./latest_hour_thies_cum.dat"
+    thiesFilePath = "./latest_thies.dat"
     cl51FilePath = "./last_cbh.txt"
 
 else:
     hostName = "134.95.211.110"
     serverPort = 8080
     dataFilePath = "/data/obs/site/cgn/meteo_sport/latest_values.dat"
-    thiesFilePath = "/data/obs/site/cgn/thies/l1/latest_hour_thies_cum.dat"
+    thiesFilePath = "/data/obs/site/cgn/thies/latest_thies.dat"
     jsonFilePath = "/home/citystation/public_html/webDashboard/data.json"
     cl51FilePath = "/data/obs/site/cgn/cl51/l0/last_cbh.txt"
 
@@ -86,11 +86,11 @@ class MyServer(BaseHTTPRequestHandler):
                     "unit": "m",
                 },
                 "precip_last_hour": {
-                    "value": round(df_thies["accum"].values.item(), 1),
+                    "value": round(df_thies["accum_precip_1_hour"].values.item(), 1),
                     "unit": "mm",
-                    "string": str(round(df_thies["accum"].values.item(), 1)).replace(
-                        ".", ","
-                    ),
+                    "string": str(
+                        round(df_thies["accum_precip_1_hour"].values.item(), 1)
+                    ).replace(".", ","),
                 },
             }
             # read last entry from data file and update dict
