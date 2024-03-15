@@ -10,13 +10,13 @@ local = False
 
 if local:
     dataFilePath = "./latest_values.dat"
-    thiesFilePath = "./latest_hour_thies_cum.dat"
+    thiesFilePath = "./latest_thies.dat"
     jsonFilePath = "./data.json"
     cl51FilePath = "./last_cbh.txt"
 else:
     dataFilePath = "/data/obs/site/cgn/meteo_sport/latest_values.dat"
     cl51FilePath = "/data/obs/site/cgn/cl51/l0/last_cbh.txt"
-    thiesFilePath = "/data/obs/site/cgn/thies/l1/latest_hour_thies_cum.dat"
+    thiesFilePath = "/data/obs/site/cgn/thies/latest_thies.dat"
     jsonFilePath = "/home/citystation/public_html/webDashboard/data.json"
 # jsonFilePath = "data.json"
 
@@ -115,10 +115,22 @@ def updateJSON():
             ),
             "unit": "m",
         },
-        "precip_last_hour": {
-            "value": round(df_thies["accum"].values.item(), 1),
-            "unit": "mm",
-            "string": str(round(df_thies["accum"].values.item(), 1)).replace(".", ","),
+        "precip": {
+            "precip_last_hour": {
+                "value": round(df_thies["accum_precip_1_hour"].values.item(), 1),
+                "unit": "mm",
+                "string": str(
+                    round(df_thies["accum_precip_1_hour"].values.item(), 1)
+                ).replace(".", ","),
+            },
+            "precip_type": {
+                "value": df_thies["precip_type"].values.item(),
+                "unit": "METAR 4678",
+            },
+            "precip_rate": {
+                "value": round(df_thies["precip_rate"].values.item(), 1),
+                "unit": "mm/min",
+            },
         },
     }
 
