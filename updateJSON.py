@@ -125,7 +125,7 @@ def updateJSON():
             },
             "precip_type": {
                 "value": df_thies["precip_type"].values.item(),
-                "unit": "",
+                "unit": "METAR 4678",
             },
             "precip_rate": {
                 "value": round(df_thies["precip_rate"].values.item(), 1),
