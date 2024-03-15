@@ -96,7 +96,7 @@ class MyServer(BaseHTTPRequestHandler):
                         ).replace(".", ","),
                     },
                     "precip_type": {
-                        "value": round(df_thies["precip_type"].values.item(), 1),
+                        "value": df_thies["precip_type"].values.item(),
                         "unit": "",
                     },
                     "precip_rate": {
