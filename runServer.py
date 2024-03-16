@@ -69,7 +69,11 @@ class MyServer(BaseHTTPRequestHandler):
                     "unit": "hPa",
                 },
                 "uv": {"value": round(df["UVind_Avg"].values.item(), 0), "unit": ""},
-                "wind_direction": {"value": directionLetter, "unit": ""},
+                "wind_direction": {
+                    "value": df["WindDir_D1_WVT"].values.item(),
+                    "unit": "",
+                    "string": directionLetter,
+                },
                 "wind_speed": {
                     "value": speed,
                     "unit": "km/h",
