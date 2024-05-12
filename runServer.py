@@ -18,6 +18,7 @@ else:
     serverPort = 8080
     dataFilePath = "/data/obs/site/cgn/meteo_sport/latest_values.dat"
     thiesFilePath = "/data/obs/site/cgn/thies/latest_thies.dat"
+    ozoneFilePath = "/data/obs/site/cgn/aqm/latest_ozone.dat"
     jsonFilePath = "/home/citystation/public_html/webDashboard/data.json"
     cl51FilePath = "/data/obs/site/cgn/cl51/l0/last_cbh.txt"
 
@@ -28,6 +29,7 @@ class MyServer(BaseHTTPRequestHandler):
             df = pd.read_csv(dataFilePath, header=1, skiprows=[2, 3])
             df_cl51 = pd.read_csv(cl51FilePath, header=0, comment="#")
             df_thies = pd.read_csv(thiesFilePath)
+            df_ozone = pd.read_csv(ozoneFilePath, header=0)
 
             datetime = pd.to_datetime(df["TIMESTAMP"].values.item())
             datetime = datetime.tz_localize("utc").tz_convert("Europe/Berlin")
@@ -107,6 +109,10 @@ class MyServer(BaseHTTPRequestHandler):
                         "value": round(df_thies["precip_rate"].values.item(), 1),
                         "unit": "mm/min",
                     },
+                },
+                "ozone": {
+                    "value": round(max(0, df_ozone.values.item())),
+                    "unit": "ppb",
                 },
             }
             # read last entry from data file and update dict
