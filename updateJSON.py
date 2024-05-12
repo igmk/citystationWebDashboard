@@ -17,6 +17,7 @@ else:
     dataFilePath = "/data/obs/site/cgn/meteo_sport/latest_values.dat"
     cl51FilePath = "/data/obs/site/cgn/cl51/l0/last_cbh.txt"
     thiesFilePath = "/data/obs/site/cgn/thies/latest_thies.dat"
+    ozoneFilePath = "/data/obs/site/cgn/aqm/latest_ozone.dat"
     jsonFilePath = "/home/citystation/public_html/webDashboard/data.json"
 # jsonFilePath = "data.json"
 
@@ -53,6 +54,7 @@ def updateJSON():
     df = pd.read_csv(dataFilePath, header=1, skiprows=[2, 3])
     df_cl51 = pd.read_csv(cl51FilePath, header=0, comment="#")
     df_thies = pd.read_csv(thiesFilePath)
+    df_ozone = pd.read_csv(ozoneFilePath, header=0)
 
     # convert wind direction
     dir_name = [
@@ -135,6 +137,10 @@ def updateJSON():
                 "value": round(df_thies["precip_rate"].values.item(), 1),
                 "unit": "mm/min",
             },
+        },
+        "ozone": {
+            "value": round(max(0, df_ozone.values.item())),
+            "unit": "ppb",
         },
     }
 

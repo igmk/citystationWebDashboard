@@ -35,6 +35,7 @@ async function updateBoxes() {
     document.querySelector("#cbh_cur").innerHTML = '<span">' + data["cbh_cur"]["string"] + '</span><span class="mobile-font""> m</span>';
 
     document.querySelector("#precip").innerHTML = '<span">' + data["precip"]["precip_last_hour"]["string"] + '</span><span class="mobile-font""> mm</span>';
+    document.querySelector("#ozone").innerHTML = '<span">' + data["ozone"]["value"] + '</span><span class="mobile-font""> ppb</span>';
 
     //disable spinner
     document.querySelector("#spinner1").style.display = "none";
