@@ -28,7 +28,7 @@ async function updateBoxes() {
     document.querySelector("#humidity").innerHTML = '<span">' + data["humidity"]["value"] + '</span><span class="mobile-font""> %</span>';
     document.querySelector("#pressure").innerHTML = '<span">' + data["pressure"]["value"] + '</span><span class="mobile-font""> hPa</span>';
     document.querySelector("#uv").innerHTML = data["uv"]["value"]
-    document.querySelector("#speed").innerHTML = '<span">' + data["wind_speed"]["value"] + '</span><span class="mobile-font""> km/h</span>';
+    document.querySelector("#speed").innerHTML = '<span">' + data["wind_speed"]["string"] + '</span><span class="mobile-font""> km/h</span>';
     document.querySelector("#direction").innerHTML = '<span class="mobile-font">' + data["wind_direction"]["string"] + '</span>';
     document.querySelector("#strahl").innerHTML = '<span">' + data["global_radiation"]["value"] + '</span><span class="mobile-font""> W/m²</span>';
 
