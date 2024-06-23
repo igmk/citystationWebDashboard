@@ -4,6 +4,7 @@
 import json
 import pandas as pd
 import time
+import numpy as np
 
 
 local = False
@@ -13,6 +14,7 @@ if local:
     thiesFilePath = "./latest_thies.dat"
     jsonFilePath = "./data.json"
     cl51FilePath = "./last_cbh.txt"
+    ozoneFilePath = "./latest_ozone.dat"
 else:
     dataFilePath = "/data/obs/site/cgn/meteo_sport/latest_values.dat"
     cl51FilePath = "/data/obs/site/cgn/cl51/l0/last_cbh.txt"
@@ -33,6 +35,16 @@ def float_format(x, n_digits):
         .replace("nan", "---")
     )
     return s
+
+
+def dew_point(T, RH):
+    # Function from dx.doi.org/10.1175/BAMS-86-2-225
+    # T in Celsius, RH in %
+    A = 17.625
+    B = 243.04
+    frac_1 = B * (np.log(RH / 100) + (A * np.divide(T, np.add(B, T))))
+    frac_2 = A - np.log(RH / 100) - A * np.divide(T, np.add(B, T))
+    return np.divide(frac_1, frac_2)
 
 
 # formatting of cloud base heights
@@ -87,6 +99,7 @@ def updateJSON():
 
     datetime = datetime.tz_localize("utc").tz_convert("Europe/Berlin")
 
+    df["dewpoint"] = dew_point(df["AirTC_2_Avg"], df["RH_2"])
     # create a dict with nicely formatted strings for the variables
     dict = {
         "datetime": datetime.strftime("%Y-%m-%d %H:%M:%S"),
@@ -95,9 +108,18 @@ def updateJSON():
             "unit": "°C",
             "string": str(round(df["AirTC_2_Avg"].values.item(), 1)).replace(".", ","),
         },
+        "dewpoint": {
+            "value": round(df["dewpoint"].values.item(), 1),
+            "unit": "°C",
+            "string": str(round(df["dewpoint"].values.item(), 1)).replace(".", ","),
+        },
         "humidity": {"value": round(df["RH_2"].values.item(), 0), "unit": "%"},
         "pressure": {
             "value": round(df["BP_mbar_sl_Avg"].values.item(), 0),
+            "unit": "hPa",
+        },
+        "ground-pressure": {
+            "value": round(df["BP_mbar_Avg"].values.item(), 0),
             "unit": "hPa",
         },
         "uv": {"value": round(df["UVind_Avg"].values.item(), 0), "unit": ""},

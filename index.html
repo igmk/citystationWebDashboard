@@ -66,8 +66,11 @@
 
               <div class="small-box bg-danger">
                 <div class="inner">
-                  <h3 id="temperature">NaN</h3>
-                  <p>Temperatur, 2m</p>
+                  <h3>
+                    <span id="temperature">NaN</span>
+                    <span id="dewpoint" style="float:right;">NaN</span>
+                  </h3>
+                  <p>Temperatur (2m) und Taupunkt</p>
                   <!--- AGL gel�scht: Abk. f�r 'Above Ground Level' --- man k�nnte auch 'H&ouml;he' schreiben, geht meiner meinung aber auch ganz ohne --->
                 </div>
                 <div class="icon">
@@ -94,7 +97,9 @@
               <div class="small-box bg-warning">
                 <div class="inner">
                   <h3 id="pressure">NaN</h3>
-                  <p id="pressure-target">Luftdruck, normiert auf NN</p>
+                  <p>
+                    <span id="pressure-target">Luftdruck (NN), Station: <span id="ground-pressure">NaN</span> </span>
+                     </p>
                   <!---  das war MSL, Abk. f�r 'Mean Sea Level' , ersetzt durch NN = 'Normal Null', das ist die (alte) deutsche Bezeichung, neu w�re NHN ...  --->
                 </div>
                 <div class="icon">
@@ -290,7 +295,7 @@
 
               <div class="small-box bg-red">
                 <div class="inner">
-                  <h3 id="ozone" style="color:white" target="_blank">in Kürze</h3>
+                  <h3 id="ozone" style="color:white" target="_blank">NaN</h3>
                   <p style="color:white" target="_blank">Ozonkonzentration</p>
                 </div>
                 <div class="icon">
@@ -332,7 +337,7 @@
           für Geophysik und Meteorologie</a>.</strong>
       All rights reserved.
       <div class="float-right d-none d-sm-inline-block">
-        <b>Version</b> 2.1.1
+        <b>Version</b> 2.2.0
       </div>
     </footer>
   </div>

@@ -3,6 +3,7 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 from updateJSON import cbh_to_str
 import json
 import pandas as pd
+from updateJSON import dew_point
 
 
 local = False
@@ -12,6 +13,7 @@ if local:
     dataFilePath = "./latest_values.dat"
     thiesFilePath = "./latest_thies.dat"
     cl51FilePath = "./last_cbh.txt"
+    ozoneFilePath = "./latest_ozone.dat"
 
 else:
     hostName = "134.95.211.110"
@@ -56,7 +58,8 @@ class MyServer(BaseHTTPRequestHandler):
             ]
             directionLetter = dir_name[int(df["WindDir_D1_WVT"].item() / 22.5 + 0.5)]
             speed = round(df["WS_ms_S_WVT"].item() * 3.6, 1)
-            dict = dict = {
+            df["dewpoint"] = dew_point(df["AirTC_2_Avg"], df["RH_2"])
+            dict = {
                 "datetime": datetime.strftime("%Y-%m-%d %H:%M:%S"),
                 "temperature": {
                     "value": round(df["AirTC_2_Avg"].values.item(), 1),
@@ -65,9 +68,20 @@ class MyServer(BaseHTTPRequestHandler):
                         ".", ","
                     ),
                 },
+                "dewpoint": {
+                    "value": round(df["dewpoint"].values.item(), 1),
+                    "unit": "°C",
+                    "string": str(round(df["dewpoint"].values.item(), 1)).replace(
+                        ".", ","
+                    ),
+                },
                 "humidity": {"value": round(df["RH_2"].values.item(), 0), "unit": "%"},
                 "pressure": {
                     "value": round(df["BP_mbar_sl_Avg"].values.item(), 0),
+                    "unit": "hPa",
+                },
+                "ground-pressure": {
+                    "value": round(df["BP_mbar_Avg"].values.item(), 0),
                     "unit": "hPa",
                 },
                 "uv": {"value": round(df["UVind_Avg"].values.item(), 0), "unit": ""},
