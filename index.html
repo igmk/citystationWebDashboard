@@ -26,10 +26,6 @@
     if (isMobile) {
       var h1Element = document.querySelector(".m-0");
       h1Element.childNodes[0].nodeValue = "Köln (UniSport)";
-      var pressureString = document.querySelector("#pressure-target");
-      pressureString.textContent = "Druck, normiert auf NN";
-      var precipString = document.querySelector("#precip-target");
-      precipString.textContent = "Niederschlag, 1h";
     }
   };
 </script>
@@ -66,12 +62,10 @@
 
               <div class="small-box bg-danger">
                 <div class="inner">
-                  <h3>
-                    <span id="temperature">NaN</span>
-                    <span id="dewpoint" style="float:right;">NaN</span>
-                  </h3>
-                  <p>Temperatur (2m) und Taupunkt</p>
-                  <!--- AGL gel�scht: Abk. f�r 'Above Ground Level' --- man k�nnte auch 'H&ouml;he' schreiben, geht meiner meinung aber auch ganz ohne --->
+                  <h3 id="temperature">NaN</h3>
+                  <p>
+                    <span id="temp-target">Temperatur (2m), Taupunkt: <span id="dewpoint">NaN</span></span>
+                  </p>                
                 </div>
                 <div class="icon">
                   <i class="bi bi-thermometer-half"></i>
@@ -99,7 +93,7 @@
                   <h3 id="pressure">NaN</h3>
                   <p>
                     <span id="pressure-target">Luftdruck (NN), Station: <span id="ground-pressure">NaN</span> </span>
-                     </p>
+                  </p>
                   <!---  das war MSL, Abk. f�r 'Mean Sea Level' , ersetzt durch NN = 'Normal Null', das ist die (alte) deutsche Bezeichung, neu w�re NHN ...  --->
                 </div>
                 <div class="icon">
@@ -156,7 +150,7 @@
               <div class="small-box bg-success">
                 <div class="inner">
                   <h3 id="humidity">NaN</h3>
-                  <p>relative Feuchte, 2m</p>
+                  <p>relative Feuchte (2m)</p>
                 </div>
                 <div class="icon">
                   <i class="bi bi-droplet"></i>
@@ -189,7 +183,7 @@
               <div class="small-box bg-info">
                 <div class="inner">
                   <h3 id="precip" style="color:white" target="_blank">NaN</h3>
-                  <p style="color:white" target="_blank" id="precip-target">Niederschlag, letzte Stunde</p>
+                  <p style="color:white" target="_blank" id="precip-target">Niederschlag (letzte Stunde)</p>
                 </div>
                 <div class="icon">
                   <i class="bi bi-moisture"></i>
