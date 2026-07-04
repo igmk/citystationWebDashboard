@@ -38,7 +38,7 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1 class="m-0">Köln, Innerer Grüngürtel (UniSport)</h1>
+              <h1 class="m-0">Köln Innerer Grüngürtel (UniSport)</h1>
             </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
@@ -64,7 +64,7 @@
                 <div class="inner">
                   <h3 id="temperature">NaN</h3>
                   <p>
-                    <span id="temp-target">Temperatur (2m), Taupunkt: <span id="dewpoint">NaN</span></span>
+                    <span id="temp-target">Temperatur, Taupunkt: <span id="dewpoint">NaN</span></span>
                   </p>                
                 </div>
                 <div class="icon">
@@ -150,7 +150,7 @@
               <div class="small-box bg-success">
                 <div class="inner">
                   <h3 id="humidity">NaN</h3>
-                  <p>relative Feuchte (2m)</p>
+                  <p>Luftfeuchtigkeit</p>
                 </div>
                 <div class="icon">
                   <i class="bi bi-droplet"></i>
@@ -205,26 +205,26 @@
 
             <div class="col-lg-3 col-6">
 
-              <div class="small-box bg-light">
+              <div class="small-box bg-orange">
                 <div class="inner">
-                  <h3 id="cbh_cur">NaN</h3>
-                  <p>Wolkenbasish&ouml;he</p>
+                  <h3 id="strahl">NaN</h3>
+                  <p>Globalstrahlung</p>
                 </div>
                 <div class="icon">
-                  <i class="bi bi-clouds"></i>
+                  <i class="bi bi-sun"></i>
                 </div>
 
                 <div class="small-box-footer">
-                  <a href="https://atmos.meteo.uni-koeln.de/~citystation/dataBrowser/dataBrowser2.html?site=CITYSTATION&date=0&UpperLeft=Ceilometer_all&UpperRight=Ceilometer_3km"
+                  <a href="https://atmos.meteo.uni-koeln.de/~citystation/dataBrowser/dataBrowser1.html?site=CITYSTATION&date=0&UpperLeft=Strahlung_Köln"
                     style="color:white" target="_blank">Verlauf <i class="bi bi-graph-up"></i></a>
                   &nbsp;&nbsp;&nbsp;
-                  <a href="https://obs.meteo.uni-koeln.de/doku.php?id=citystation#ceilometer" style="color:white"
+                  <a href="https://obs.meteo.uni-koeln.de/doku.php?id=citystation#globalstrahlung" style="color:white"
                     target="_blank">Details <i class="bi bi-file-earmark-text"></i></a>
                 </div>
-
-                <div id="spinner7" class="overlay">
+                <div id="spinner6" class="overlay">
                   <i class="spinner-border "></i>
                 </div>
+
               </div>
             </div>
 
@@ -254,31 +254,31 @@
               </div>
             </div>
 
+
             <div class="col-lg-3 col-6">
 
-              <div class="small-box bg-orange">
+              <div class="small-box bg-light">
                 <div class="inner">
-                  <h3 id="strahl">NaN</h3>
-                  <p>Globalstrahlung</p>
+                  <h3 id="cbh_cur">NaN</h3>
+                  <p>Wolkenbasish&ouml;he</p>
                 </div>
                 <div class="icon">
-                  <i class="bi bi-sun"></i>
+                  <i class="bi bi-clouds"></i>
                 </div>
 
                 <div class="small-box-footer">
-                  <a href="https://atmos.meteo.uni-koeln.de/~citystation/dataBrowser/dataBrowser1.html?site=CITYSTATION&date=0&UpperLeft=Strahlung_Köln"
+                  <a href="https://atmos.meteo.uni-koeln.de/~citystation/dataBrowser/dataBrowser2.html?site=CITYSTATION&date=0&UpperLeft=Ceilometer_all&UpperRight=Ceilometer_3km"
                     style="color:white" target="_blank">Verlauf <i class="bi bi-graph-up"></i></a>
                   &nbsp;&nbsp;&nbsp;
-                  <a href="https://obs.meteo.uni-koeln.de/doku.php?id=citystation#globalstrahlung" style="color:white"
+                  <a href="https://obs.meteo.uni-koeln.de/doku.php?id=citystation#ceilometer" style="color:white"
                     target="_blank">Details <i class="bi bi-file-earmark-text"></i></a>
                 </div>
-                <div id="spinner6" class="overlay">
+
+                <div id="spinner7" class="overlay">
                   <i class="spinner-border "></i>
                 </div>
-
               </div>
             </div>
-
 
 
 
